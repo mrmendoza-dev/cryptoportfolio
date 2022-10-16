@@ -1,4 +1,4 @@
-# cryptoportfolio
+# CryptoPortfolio
 
 ## Features
 - 
