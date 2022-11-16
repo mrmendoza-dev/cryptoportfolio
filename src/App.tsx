@@ -1,34 +1,75 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./css/App.css";
+import { nanoid } from "nanoid";
+import logo from "./assets/logo.png";
+import styled from "styled-components";
+import Footer from "./components/Nav/Footer";
+import Header from "./components/Nav/Header";
+
+const Percent = styled.p<{ data: number }>`
+  color: ${(props: any) =>
+    props.data === 0
+      ? "var(--clr-fontAccent)"
+      : props.data > 0
+      ? "var(--clr-gain)"
+      : "var(--clr-loss)"};
+`;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cryptos, setCryptos] = useState([]);
+  const [globalData, setGlobalData] = useState({
+    active_cryptocurrencies: 0,
+    markets: 0,
+    market_cap_change_percentage_24h_usd: 0,
+    total_market_cap: { usd: 0 },
+    total_volume: { usd: 0 },
+    market_cap_percentage: { btc: 0, eth: 0 },
+  });
+
+  const coingeckoUrl = "https://www.coingecko.com/en/coins/";
+  const baseUrl = "https://api.coingecko.com/api/v3/";
+  const currency = "usd";
+  const order = "market_cap_desc";
+  const perPage = "100";
+  const sparkline = "true";
+  const pricePercentage = "1h%2C24h%2C7d%2C14d%2C30d%2C200d%2C1y";
+
+  const cryptosUrl = `${baseUrl}coins/markets?vs_currency=${currency}&order=${order}&per_page=${perPage}&page=${String(
+    1
+  )}&sparkline=${sparkline}&price_change_percentage=${pricePercentage}`;
+  const globalUrl = "https://api.coingecko.com/api/v3/global";
+
+  function getCryptoData() {
+    fetch(cryptosUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setCryptos(data);
+      });
+  }
+
+  function getGlobalData() {
+    fetch(globalUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setGlobalData(data.data);
+      });
+  }
+
+
+
+  useEffect(getCryptoData, []);
+  useEffect(getGlobalData, []);
+
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header globalData={globalData} title={"CryptoPortfolio"} />
+
+      <div className="Portfolio"></div>
+
+      <Footer title={"CryptoPortfolio"} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
