@@ -31,6 +31,7 @@ export default function DarkMode() {
     shadow: "#999",
     row: "#F9FAFB",
     hr: "#F3F4F6",
+    
   };
   
   const darkTheme = {
