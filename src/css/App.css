@@ -54,7 +54,7 @@ button:active {
   background-color: var(--clr-bg);
   color: var(--clr-font);
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 600;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100vh;
   /* overflow: hidden; */
@@ -84,3 +84,7 @@ button:active {
 
 
 
+input, select {
+  font-size: inherit;
+  font-weight: inherit;
+}

@@ -7,6 +7,7 @@
     display: flex;
     gap: 2em;
     padding: 2em 4em;
+    padding-top: 4em;
     max-width: 1600px;
 }
 
@@ -97,7 +98,7 @@
     background-color: var(--clr-gain);
     font-weight: 700;
     border-radius: 7px;
-    padding: .3em .4em;
+    padding: .4em .6em;
 
 }
 
@@ -110,12 +111,14 @@
 
 .change-timeframe {
     color: var(--clr-fontAccent);
+    background-color: var(--clr-row);
     font-size: .9rem;
+    padding: .1em .2em;
+    border-radius: 5px;
 }
 .change-amount {
     color: var(--clr-gain);
-        font-weight: 700;
-
+    font-weight: 700;
 }
 
 .header-controls {
@@ -130,11 +133,17 @@
 .btn-add {
     background-color: var(--clr-btn);
     color: #fff;
+    display: flex;
+    align-items: center;
+    gap: .5em;
 
 }
 .btn-more {
     color: var(--clr-font);
     background-color: var(--clr-row);
+    display: flex;
+    align-items: center;
+    gap: .5em;
 
 }
 
@@ -200,8 +209,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: .4em;
-    font-size: .9rem;
+    gap: .8em;
+    font-size: .8rem;
+    font-weight: 700;
+
 }
 
 
@@ -209,6 +220,8 @@
     color: var(--clr-loss);
     margin-top: .3em;
     font-weight: 600;
+    font-size: .9rem;
+
 }
 
 
@@ -225,10 +238,18 @@
 
 
 
+.caret {
+    font-size: .8rem;
+    margin-right: .3em;
+}
 
 
-
-
+.crypto-img {
+    border-radius: 50%;
+    background-color: #2C4CC6;
+    height: 26px;
+    aspect-ratio: 1;
+}
 
 
 
@@ -254,9 +275,7 @@
 }
 
 
-.crypto-img {
-  width: 24px;
-}
+
 .crypto-symbol {
   text-transform: uppercase;
 }

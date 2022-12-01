@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./css/App.css";
 import "./css/Portfolio.css";
+import { nanoid } from "nanoid";
 
 import styled from "styled-components";
 import Footer from "./components/Nav/Footer";
@@ -40,7 +41,13 @@ function App() {
 
 
 
-
+  const holdings = {
+    bitcoin: 1,
+    dogecoin: 100000,
+    ethereum: 5,
+    litecoin: 50,
+    cardano: 10000,
+  };
 
 
 
@@ -136,8 +143,11 @@ function App() {
           <div className="portfolio-main-header">
             <div className="header-stats">
               <div className="header-balance">
-                <p className="header-total">${stats.total}</p>
-                <p className="header-percent">{stats.percentChange}%</p>
+                <p className="header-total">${stats.total.toLocaleString()}</p>
+                <p className="header-percent">
+                  <i className="fa-solid fa-caret-up caret"></i>
+                  {stats.percentChange}%
+                </p>
                 <button className="btn-hide" onClick={hideBalance}>
                   {hidden ? (
                     <i className="fa-solid fa-eye-slash"></i>
@@ -147,7 +157,9 @@ function App() {
                 </button>
               </div>
               <div className="header-change">
-                <p className="change-amount">+ ${stats.amountChange}</p>
+                <p className="change-amount">
+                  + ${stats.amountChange.toLocaleString()}
+                </p>
                 <p className="change-timeframe">24h</p>
               </div>
             </div>
@@ -180,26 +192,30 @@ function App() {
                 <div className="">
                   <p>All Time Profit</p>
                   <p className="stat-value">
-                    {stats.profit.percent}%(${stats.profit.amount})
+                    <i className="fa-solid fa-caret-down caret"></i>
+                    {stats.profit.percent}%($
+                    {stats.profit.amount.toLocaleString()})
                   </p>
                 </div>
               </div>
             </div>
             <div className="portfolio-stat">
-              <div className="block-img"></div>
+              <div className="crypto-img"></div>
               <div className="">
                 <p>Best Performer</p>
                 <p className="stat-value">
-                  {stats.best.percent}%(${stats.best.amount})
+                  <i className="fa-solid fa-caret-down caret"></i>
+                  {stats.best.percent}%(${stats.best.amount.toLocaleString()})
                 </p>
               </div>
             </div>
             <div className="portfolio-stat">
-              <div className="block-img"></div>
+              <div className="crypto-img"></div>
               <div className="">
                 <p>Worst Performer</p>
                 <p className="stat-value">
-                  {stats.worst.percent}%(${stats.worst.amount})
+                  <i className="fa-solid fa-caret-down caret"></i>
+                  {stats.worst.percent}%(${stats.worst.amount.toLocaleString()})
                 </p>
               </div>
             </div>
@@ -207,7 +223,109 @@ function App() {
 
           <div className="portfolio-main-table">
             <p className="subheader">Your Assets</p>
-            <table></table>
+            <table>
+              <thead>
+                <tr className="table-head">
+                  <th className="center">#</th>
+                  <th className="left">Coin</th>
+                  <th className="center">Price</th>
+                  <th className="right">24h</th>
+                  <th className="center">Holdings</th>
+                  <th className="center">Avg. Buy Price</th>
+                  <th className="center">Profit/Loss</th>
+                  <th className="center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cryptos.map((crypto: any) => (
+                  <tr key={nanoid()} className="crypto-row">
+                    <td className="">
+                      <p>{crypto.market_cap_rank}.</p>
+                    </td>
+
+                    <td>
+                      <a
+                        href={`${coingeckoUrl}${crypto.id}`}
+                        target="_blank"
+                        rel="noopener"
+                      >
+                        <div className="coin-data">
+                          <img className="crypto-img" src={crypto.image} />
+                          <p className="crypto-name">{crypto.name}</p>
+                          <p className="crypto-symbol">{crypto.symbol}</p>
+                        </div>
+                      </a>
+                    </td>
+
+                    <td>
+                      <p className="right">
+                        $
+                        {crypto.current_price.toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                        })}
+                      </p>
+                    </td>
+
+                    <td>
+                      <Percent
+                        data={crypto.price_change_percentage_1h_in_currency}
+                        className="right"
+                      >
+                        {Number(
+                          crypto.price_change_percentage_1h_in_currency
+                        ).toFixed(1)}
+                        %
+                      </Percent>
+                    </td>
+
+                    <td>
+                      <Percent
+                        data={crypto.price_change_percentage_24h_in_currency}
+                        className="right"
+                      >
+                        {Number(
+                          crypto.price_change_percentage_24h_in_currency
+                        ).toFixed(1)}
+                        %
+                      </Percent>
+                    </td>
+
+                    <td>
+                      <Percent
+                        data={crypto.price_change_percentage_7d_in_currency}
+                        className="right"
+                      >
+                        {Number(
+                          crypto.price_change_percentage_7d_in_currency
+                        ).toFixed(1)}
+                        %
+                      </Percent>
+                    </td>
+
+                    <td>
+                      <p className="right">
+                        ${crypto.total_volume.toLocaleString()}
+                      </p>
+                    </td>
+
+                    <td>
+                      <p className="right">
+                        ${crypto.market_cap.toLocaleString()}
+                      </p>
+                    </td>
+
+                    <td className="center">
+                      <button className="btn-table">
+                        <i className="fa-solid fa-plus"></i>
+                      </button>
+                      <button className="btn-table">
+                        <i className="fa-solid fa-ellipsis-vertical"></i>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
