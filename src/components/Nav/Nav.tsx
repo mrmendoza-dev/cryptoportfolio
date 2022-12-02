@@ -1,20 +1,11 @@
-import styled from "styled-components";
 import logo from "./logo.png";
 import "./Nav.css";
 import DarkMode from "./DarkMode";
-
-const Percent = styled.p<{ data: number }>`
-  color: ${(props: any) =>
-    props.data === 0
-      ? "var(--clr-fontAccent)"
-      : props.data > 0
-      ? "var(--clr-gain)"
-      : "var(--clr-loss)"};
-`;
+import { Percent } from "../Percent";
 
 export default function Header(props: any) {
   let globalData = props.globalData;
-  const repoUrl = "https://github.com/mrmendoza171/cryptotracker";
+  const repoUrl = "https://github.com/mrmendoza171/cryptoportfolio";
 
   return (
     <div className="Nav">
@@ -90,7 +81,7 @@ export default function Header(props: any) {
           </select>
           <div className="nav-icons">
             <DarkMode />
-            <a href={repoUrl}>
+            <a href={repoUrl} target="_blank">
               <i className="fa-brands fa-github nav-icon"></i>
             </a>
             <button className="nav-icon">

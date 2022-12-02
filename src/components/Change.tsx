@@ -1,15 +1,7 @@
 
-import styled from "styled-components";
+import { Percent } from "./Percent";
 
 export default function Change(props: any) {
-  const Percent = styled.p<{ data: number }>`
-    background-color: ${(props: any) =>
-      props.data === 0
-        ? "var(--clr-fontAccent)"
-        : props.data > 0
-        ? "var(--clr-gain)"
-        : "var(--clr-loss)"};
-  `;
 
   return (
     <div className="Change">
