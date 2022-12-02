@@ -193,13 +193,19 @@
 }
 
 .btn-table {
+    font-size: 1.1rem;
     background-color: inherit;
     border: none;
     color: var(--clr-fontAccent);
 }
 
 
-
+.action-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .4em;
+}
 
 
 
@@ -367,17 +373,17 @@ tbody {
 }
 
 
-
 .hidden-cover {
     background-color: var(--clr-hr);
-    border-radius: 10px;
+    border-radius: .4em;
     color: var(--clr-hr) !important;
     position: relative;
     user-select: none;
-
 }
+
 .hidden-icon {
     color: var(--clr-fontAccent);
+    opacity: .7;
     font-size: .8em;
     position: absolute;
     font-weight: 600;
