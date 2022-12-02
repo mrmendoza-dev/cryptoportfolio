@@ -65,7 +65,6 @@ export default function DarkMode() {
       root.style.setProperty("--clr-shadow", theme.shadow);
       root.style.setProperty("--clr-row", theme.row);
       root.style.setProperty("--clr-hr", theme.hr);
-
   }
 
   function setTheme() {
@@ -87,3 +86,5 @@ export default function DarkMode() {
     </button>
   );
 }
+
+

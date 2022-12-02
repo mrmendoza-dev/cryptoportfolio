@@ -5,36 +5,31 @@ export default function Footer(props: any) {
 
     return (
       <div className="Footer">
-        <div className="footer-logo">
-          <a href="/">
-            <div className="header-title">
-              <img src={logo} />
-              <p>{props.title}</p>
-            </div>
-          </a>
+        <div className="footer-main">
           <p className="footer-copyright">
             © 2022 CryptoTracker. All rights reserved
           </p>
         </div>
+
         <div className="footer-dir">
           <div className="dir-col">
             <p className="dir-title">Products</p>
             <div className="dir-list">
               <p className="dir-item">
-                <a href="https://cryptotracker-mendoza.netlify.app/">
+                <a className="nav-link" href="https://cryptotracker-mendoza.netlify.app/">
                   CryptoTracker
                 </a>
               </p>
               <p className="dir-item">
-                <a href="https://cryptonews-mendoza.netlify.app/">CryptoNews</a>
+                <a className="nav-link" href="https://cryptonews-mendoza.netlify.app/">CryptoNews</a>
               </p>
               <p className="dir-item">
-                <a href="https://cryptoportfolio-mendoza.netlify.app/">
+                <a className="nav-link" href="https://cryptoportfolio-mendoza.netlify.app/">
                   CryptoPortfolio
                 </a>
               </p>
               <p className="dir-item">
-                <a href="https://cryptowidgets.netlify.app/">CryptoWidgets</a>
+                <a className="nav-link" href="https://cryptowidgets.netlify.app/">CryptoWidgets</a>
               </p>
             </div>
           </div>
@@ -42,12 +37,12 @@ export default function Footer(props: any) {
             <p className="dir-title">Company</p>
             <div className="dir-list">
               <p className="dir-item">
-                <a href="https://github.com/mrmendoza171" target="_blank">
+                <a className="nav-link" href="https://github.com/mrmendoza171" target="_blank">
                   Github
                 </a>
               </p>
               <p className="dir-item">
-                <a href="">About Us</a>
+                <a className="nav-link" href="">About Us</a>
               </p>
             </div>
           </div>
@@ -55,13 +50,13 @@ export default function Footer(props: any) {
             <p className="dir-title">Support</p>
             <div className="dir-list">
               <p className="dir-item">
-                <a href="">Request Form</a>
+                <a className="nav-link" href="">Request Form</a>
               </p>
               <p className="dir-item">
-                <a href="">FAQ</a>
+                <a className="nav-link" href="">FAQ</a>
               </p>
               <p className="dir-item">
-                <a href="">Glossary</a>
+                <a className="nav-link" href="">Glossary</a>
               </p>
             </div>
           </div>

@@ -2,13 +2,14 @@
 
 
 .Portfolio {
-    width: 90%;
     margin: 0 auto;
     display: flex;
     gap: 2em;
     padding: 2em 4em;
     padding-top: 4em;
-    max-width: 1600px;
+    max-width: var(--app-width);
+    width: 95%;
+
 }
 
 
@@ -16,7 +17,6 @@
 .portfolio-sidebar {
     display: flex;
     flex-direction: column;
-    gap: 2em;
     width: 20%;
 }
 
@@ -28,6 +28,11 @@
     display: flex;
     align-items: center;
     gap: 1em;
+    padding: .5em .6em;
+    border-radius: 10px;
+}
+.portfolio-block:hover {
+    background-color: var(--clr-row);
 }
 
 .block-img {
@@ -35,11 +40,20 @@
     background-color: #2C4CC6;
     height: 40px;
     aspect-ratio: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1rem;
 }
 
 .block-info {
-
+    display: flex;
+    flex-direction: column;
+    gap: .4em;
 }
+
 
 
 .sidebar-portfolios {
@@ -99,7 +113,6 @@
     font-weight: 700;
     border-radius: 7px;
     padding: .4em .6em;
-
 }
 
 .header-change {
@@ -144,7 +157,6 @@
     display: flex;
     align-items: center;
     gap: .5em;
-
 }
 
 .btn-hide {
@@ -167,7 +179,28 @@
     background-color: inherit;
     border: none;
     color: var(--clr-font);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    text-align: left;
+    padding: .8em 1em ;
 }
+.btn-sidebar:hover {
+    background-color: inherit;
+    color: var(--clr-link);
+    background-color: var(--clr-row);
+}
+
+.btn-table {
+    background-color: inherit;
+    border: none;
+    color: var(--clr-fontAccent);
+}
+
+
+
+
 
 
 
@@ -244,14 +277,6 @@
 }
 
 
-.crypto-img {
-    border-radius: 50%;
-    background-color: #2C4CC6;
-    height: 26px;
-    aspect-ratio: 1;
-}
-
-
 
 
 
@@ -269,9 +294,14 @@
 }
 
 
-.crypto-row {
-  align-items: center;
-  gap: 1em;
+
+
+
+.crypto-img {
+    border-radius: 50%;
+    /* background-color: #2C4CC6; */
+    height: 26px;
+    aspect-ratio: 1;
 }
 
 
@@ -288,24 +318,23 @@
 
 
 .crypto-name {
-  font-size: 1.1rem;
-  font-weight: 600;
   color: var(--clr-font);
 
 }
 
 .crypto-symbol {
-  font-size: .8rem;
-  font-weight: 400;
+  /* font-size: .8rem; */
+  font-weight: 600;
 }
 
-table {
+.portfolio-table {
   width: 100%;
   border-collapse:collapse;
   /* height: 500px; */
       /* overflow:scroll; */
   position: relative;
   z-index: 1;
+  margin-top: 1.4em;
 
 }
   
@@ -315,21 +344,60 @@ tbody {
 }
 
 .crypto-row {
-  height: 3em;
+  height: 4.2em;
   border-bottom: 1px solid var(--clr-hr);
-  font-size: 1rem;
+  font-size: .9rem;
+  font-weight: 600;
   color: var(--clr-fontAccent);
   transition: background-color 100ms;
-
+  align-items: center;
+  gap: 1em;
 }
+
+
 .crypto-row:hover {
   background-color: var(--clr-row);
 }
 .table-head {
-  height: 4em;
+  height: 4.2em;
   border-top: 1px solid var(--clr-hr);
   border-bottom: 1px solid var(--clr-hr);
+    font-size: .9rem;
+
 }
 
 
 
+.hidden-cover {
+    background-color: var(--clr-hr);
+    border-radius: 10px;
+    color: var(--clr-hr) !important;
+    position: relative;
+    user-select: none;
+
+}
+.hidden-icon {
+    color: var(--clr-fontAccent);
+    font-size: .8em;
+    position: absolute;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+
+
+
+
+
+
+@media (max-width: 1200px) {
+    .portfolio-sidebar {
+        display: none;
+    }
+}

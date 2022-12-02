@@ -9,7 +9,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --clr-contrast: #fe5f55;
+  --app-width: 1600px;
+  --clr-contrast: #fc8e06;
+  --clr-accent: #fc8e06;
   --clr-accent1: #1962a1;
   --clr-accent2: #577399;
   --clr-bg: #f7f7ff;
@@ -22,6 +24,7 @@
   --clr-gain: #16C784;
   --clr-logo: #fc8e06;
   --clr-btn: #3459E7;
+  --clr-link: #6188ff;
 }
 
 
@@ -57,6 +60,7 @@ button:active {
   font-weight: 600;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100vh;
+  min-height: 1000px;
   /* overflow: hidden; */
   }
 
@@ -73,8 +77,8 @@ button:active {
 
 
 .flex {
-    gap: .5em;
-    display: flex;
+  gap: .5em;
+  display: flex;
 }
 
 .subheader {
@@ -82,6 +86,12 @@ button:active {
   font-size: 1.4rem;
 }
 
+.inline {
+  display: inline;
+}
+.gap {
+  width: 1em;
+}
 
 
 input, select {

@@ -17,39 +17,68 @@ export default function Header(props: any) {
   const repoUrl = "https://github.com/mrmendoza171/cryptotracker";
 
   return (
-    <div className="Header">
+    <div className="Nav">
       <div className="sub-header">
         <div className="header-crypto">
-          <p>
-            Coins: {Number(globalData.active_cryptocurrencies).toLocaleString()}
-          </p>
-          <p>Exchanges: {globalData.markets.toLocaleString()}</p>
-          <div className="market-change">
-            <p>
-              Market Cap: $
-              {globalData.total_market_cap.usd.toLocaleString(undefined, {
+          <div className="header-stat">
+            <p>Coins:</p>
+            <a className="header-stat-link" href="/">
+              {Number(globalData.active_cryptocurrencies).toLocaleString()}
+            </a>
+          </div>
+
+          <div className="header-stat">
+            <p>Exchanges:</p>
+            <a className="header-stat-link" href="/">
+              {Number(globalData.markets).toLocaleString()}
+            </a>
+          </div>
+
+          <div className="header-stat">
+            <p>Market Cap:</p>
+            <a className="header-stat-link" href="/">
+              <div className="market-change">
+                <p>
+                  $
+                  {globalData.total_market_cap.usd.toLocaleString(undefined, {
+                    maximumFractionDigits: 0,
+                  })}
+                </p>
+
+                <Percent data={globalData.market_cap_change_percentage_24h_usd}>
+                  {globalData.market_cap_change_percentage_24h_usd.toFixed(2)}%
+                  {globalData.market_cap_change_percentage_24h_usd > 0 ? (
+                    <i className="fa-solid fa-caret-up"></i>
+                  ) : (
+                    <i className="fa-solid fa-caret-down"></i>
+                  )}
+                </Percent>
+              </div>
+            </a>
+          </div>
+
+          <div className="header-stat">
+            <p>24h Vol:</p>
+            <a className="header-stat-link" href="/">
+              $
+              {Number(globalData.total_volume.usd).toLocaleString(undefined, {
                 maximumFractionDigits: 0,
               })}
-            </p>
-            <Percent data={globalData.market_cap_change_percentage_24h_usd}>
-              {globalData.market_cap_change_percentage_24h_usd.toFixed(2)}%
-              {globalData.market_cap_change_percentage_24h_usd > 0 ? (
-                <i className="fa-solid fa-caret-up"></i>
-              ) : (
-                <i className="fa-solid fa-caret-down"></i>
-              )}
-            </Percent>
+            </a>
           </div>
-          <p>
-            24h Vol: $
-            {Number(globalData.total_volume.usd).toLocaleString(undefined, {
-              maximumFractionDigits: 0,
-            })}
-          </p>
-          <div className="crypto-dominance">
+
+          <div className="header-stat">
             <p>Dominance:</p>
-            <p>BTC {globalData.market_cap_percentage.btc.toFixed(1)}%</p>
-            <p>ETH {globalData.market_cap_percentage.eth.toFixed(1)}%</p>
+            <a className="header-stat-link" href="/">
+              <div className="flex">
+                <p className="inline">
+                  BTC {globalData.market_cap_percentage.btc.toFixed(1)}%
+                </p>
+                <p className="inline">
+                  ETH {globalData.market_cap_percentage.eth.toFixed(1)}%
+                </p>
+              </div>
+            </a>
           </div>
         </div>
         <div className="header-control">
@@ -76,9 +105,9 @@ export default function Header(props: any) {
 
       <div className="main-header">
         <div className="header-links">
-          <a className="header-title flex" href="/">
+          <a className="header-title flex nav-link" href="/">
             <img src={logo} />
-            <p>{props.title}</p>
+            <p>CryptoTracker</p>
           </a>
           <div className="nav-list">
             <div className="nav-item">
